@@ -1,0 +1,15 @@
+syntax="proto3";
+
+package service;
+
+option go_package="demogrpc/internal/grpc/service";
+
+import "demogrpc/internal/proto-files/domain/ping.proto";
+
+message PingResponse {
+  domain.PingMessage Response = 1;
+}
+
+service PingService {
+  rpc Ping(domain.PingMessage) returns (PingResponse);
+};

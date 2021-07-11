@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package domain;
+
+option go_package="demogrpc/internal/grpc/domain";
+
+message PingMessage {
+  string test =1;
+}

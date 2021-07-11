@@ -1,0 +1,12 @@
+syntax = "proto3";
+package demogrpc;
+
+proto option
+
+service Ping {
+    rpc ping (URLObject) returns (URLObject);
+}
+
+message URLObject {
+    string method =1;
+}
