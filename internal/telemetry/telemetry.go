@@ -14,7 +14,6 @@ func Telemetry() {
 	if err := view.Register(ocgrpc.DefaultClientViews...); err != nil {
 		log.Fatalf("Failed to register ocgrpc client views: %v", err)
 	}
-
 	dd, err := datadog.NewExporter(
 		datadog.Options{
 			Namespace:              "demogrpc",
@@ -26,6 +25,8 @@ func Telemetry() {
 			StatsdOptions:          nil,
 		},
 	)
+
+	view.RegisterExporter(new(prometheusPushGateway))
 	if err != nil {
 		log.Fatalf("Failed to create the Datadog exporter: %v", err)
 	}
